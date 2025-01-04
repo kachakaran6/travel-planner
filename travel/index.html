@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/image.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <title>Travel Planner</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <nav className="nav-bar">
+      <div className="nav-bar-background">
+        <svg className="flight-icon" viewBox="0 0 100 100">
+          <path d="M50 0L100 50L50 100L0 50Z" fill="#fff" />
+        </svg>
+        <svg className="bus-icon" viewBox="0 0 100 100">
+          <rect x="20" y="20" width="60" height="60" fill="#fff" rx="10" />
+        </svg>
+        <svg className="train-icon" viewBox="0 0 100 100">
+          <path d="M0 50L100 50" stroke="#fff" stroke-width="10" />
+        </svg>
+      </div>
+      <div className="nav-bar-content">
+        <!-- Your navbar content here -->
+      </div>
+    </nav>
+  </body>
+</html>
