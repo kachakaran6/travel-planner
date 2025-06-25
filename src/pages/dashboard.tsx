@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { supabase } from '@/lib/supabase';
-import NewTripForm from '../components/NewTripForm';
+import React, { useState, useEffect } from "react";
+import { supabase } from "@/lib/supabase";
+import NewTripForm from "../components/NewTripForm";
 // import TripDetails from '../components/TripDetails';
 
 interface Trip {
@@ -22,21 +22,20 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     const fetchTrips = async () => {
       const { data, error } = await supabase
-        .from('trips')
-        .select('*')
-        .order('created_at', { ascending: false });
+        .from("trips")
+        .select("*")
+        .order("created_at", { ascending: false });
 
       if (error) {
-        console.error('Error fetching trips:', error);
+        console.error("Error fetching trips:", error);
       } else {
-        console.log('Trips fetched:', data);
+        console.log("Trips fetched:", data);
         setTrips(data);
       }
     };
 
     fetchTrips();
   }, []);
-
 
   const TripDetails: React.FC<TripDetails> = ({ trip }) => {
     return (
@@ -59,28 +58,26 @@ const Dashboard: React.FC = () => {
     budget: number;
   }) => {
     try {
-      const { data, error } = await supabase
-        .from('trips')
-        .insert([
-          {
-            title: tripData.title,
-            description: tripData.description,
-            start_date: tripData.start_date,
-            end_date: tripData.end_date,
-            budget: tripData.budget,
-            status: 'planning',
-          },
-        ]);
+      const { data, error } = await supabase.from("trips").insert([
+        {
+          title: tripData.title,
+          description: tripData.description,
+          start_date: tripData.start_date,
+          end_date: tripData.end_date,
+          budget: tripData.budget,
+          status: "planning",
+        },
+      ]);
 
       if (error) {
-        console.error('Error creating trip:', error);
+        console.error("Error creating trip:", error);
       } else {
-        console.log('Trip created:', data);
+        console.log("Trip created:", data);
         setTrips([...trips, data[0]]);
         setIsFormOpen(false);
       }
     } catch (err) {
-      console.error('Unexpected error:', err);
+      console.error("Unexpected error:", err);
     }
   };
 
